@@ -46,11 +46,11 @@ namespace Products.Domain.Categories
 				builder.Property(p => p.ThumbnailUrl).IsRequired().HasMaxLength(50).HasDefaultValue("https://placehold.co/150.png");
 				builder.Property(p => p.CreationDateTime).IsRequired().HasDefaultValue(DateTime.UtcNow);
 				builder.Property(p => p.ModificationDateTime).IsRequired().HasDefaultValue(DateTime.UtcNow);
-				builder.HasData(SeedLargeData());
+				builder.HasData(SeedCategories());
 			}
 
 			//Seed Data
-			internal List<Category> SeedLargeData()
+			internal List<Category> SeedCategories()
 			{
 				var categories = new List<Category>();
 				using (StreamReader r = new StreamReader(@"SeedData/CategorySeed.json"))

@@ -40,12 +40,12 @@ namespace Products.Domain.Products
 				builder.Property(p => p.Code).IsRequired().HasMaxLength(50);
 				builder.Property(p => p.CreationDateTime).IsRequired().HasDefaultValue(DateTime.UtcNow);
 				builder.Property(p => p.ModificationDateTime).IsRequired().HasDefaultValue(DateTime.UtcNow);
-				builder.HasData(SeedLargeData());
+				builder.HasData(SeedProducts());
 
 			}
 
 			//Seed Data
-			internal List<Product> SeedLargeData()
+			internal List<Product> SeedProducts()
 			{
 				var products = new List<Product>();
 				using (StreamReader r = new StreamReader(@"SeedData/ProductSeed.json"))
