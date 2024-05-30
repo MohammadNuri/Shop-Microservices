@@ -22,6 +22,7 @@ namespace Products.Api
 
 		public static IServiceCollection AddInfrastructureServices(this WebApplicationBuilder builder)
 		{
+			builder.Services.AddAutoMapper(Assemblies.InfrastructureAssembly);
 			builder.Services.AddDbContext<ProductDbContext>(option =>
             	option.UseNpgsql(builder.Configuration.GetConnectionString("ProductDbConn")));
 
