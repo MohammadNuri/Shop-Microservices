@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Newtonsoft.Json;
 using Products.Domain.Base;
 using Products.Domain.Categories;
 using System;
@@ -39,6 +40,20 @@ namespace Products.Domain.Products
 				builder.Property(p => p.Code).IsRequired().HasMaxLength(50);
 				builder.Property(p => p.CreationDateTime).IsRequired().HasDefaultValue(DateTime.UtcNow);
 				builder.Property(p => p.ModificationDateTime).IsRequired().HasDefaultValue(DateTime.UtcNow);
+				builder.HasData(SeedLargeData());
+
+			}
+
+			//Seed Data
+			internal List<Product> SeedLargeData()
+			{
+				var products = new List<Product>();
+				using (StreamReader r = new StreamReader(@"SeedData/ProductSeed.json"))
+				{
+					string json = r.ReadToEnd();
+					products = JsonConvert.DeserializeObject<List<Product>>(json);
+				}
+				return products;
 			}
 		}
 		
