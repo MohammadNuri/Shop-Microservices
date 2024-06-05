@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FluentValidation;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using Products.Application.Behaviours;
 using Products.Domain;
 using Products.Infrastructure;
 using System.Text.Json.Serialization;
@@ -25,9 +28,19 @@ namespace Products.Api
 			builder.Services.AddAutoMapper(Assemblies.InfrastructureAssembly);
 			builder.Services.AddDbContext<ProductDbContext>(option =>
             	option.UseNpgsql(builder.Configuration.GetConnectionString("ProductDbConn")));
-
 			builder.Services.AddScoped<IReadUnitOfWork, ReadUnitOfWork>();
 			builder.Services.AddScoped<IWriteUnitOfWork, WriteUnitOfWork>();
+
+			return builder.Services;
+		}
+		
+		public static IServiceCollection AddApplicationServices(this WebApplicationBuilder builder)
+		{
+			builder.Services.AddValidatorsFromAssembly(Assemblies.ApplicationAssembly);
+			builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assemblies.ApplicationAssembly));
+			builder.Services.AddTransient(typeof(IPipelineBehavior<,>),typeof(UnhandledExceptionBehaviour<,>));
+			builder.Services.AddTransient(typeof(IPipelineBehavior<,>),typeof(ValidationBehaviour<,>));
+
 
 			return builder.Services;
 		}

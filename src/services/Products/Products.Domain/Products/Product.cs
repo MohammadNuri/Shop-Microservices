@@ -41,7 +41,6 @@ namespace Products.Domain.Products
 				builder.Property(p => p.CreationDateTime).IsRequired().HasDefaultValue(DateTime.UtcNow);
 				builder.Property(p => p.ModificationDateTime).IsRequired().HasDefaultValue(DateTime.UtcNow);
 				builder.HasData(SeedProducts());
-
 			}
 
 			//Seed Data
