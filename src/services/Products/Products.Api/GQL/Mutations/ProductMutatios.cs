@@ -3,7 +3,10 @@ using GraphQL.Types;
 using MediatR;
 using Products.Api.GQL.Types.Products;
 using Products.Application.Products.Commands.Create;
+using Products.Application.Products.Commands.Update;
 using Products.Domain.Products;
+#pragma warning disable CS0618
+#pragma warning disable GQL004
 
 namespace Products.Api.GQL.Mutations
 {
@@ -11,6 +14,7 @@ namespace Products.Api.GQL.Mutations
 	{
 		public static void ProductsMutations(this ObjectGraphType schema, IMediator mediator)
 		{
+
 			schema.FieldAsync<ProductResType>(
 				"addProduct",
 				"Is used to add a new product to the database",
@@ -34,8 +38,31 @@ namespace Products.Api.GQL.Mutations
 				}
 				);
 
+			schema.FieldAsync<BooleanGraphType>(
+				"updateProduct",
+				"Is used to update a product",
+				arguments: new QueryArguments(new QueryArgument<NonNullGraphType<ProductReqType>>
+				{
+					Name = "productInput",
+					Description = "Product Input Parameter"
+				}),
+				resolve: async context =>
+				{
+					UpdateProductCommand updateProduct = context.GetArgument<UpdateProductCommand>("productInput");
+					bool updateProductRes;
+					try
+					{
+						updateProductRes = await mediator.Send(updateProduct);
+					}
+					catch (Exception ex)
+					{
+						context.Errors.Add(new ExecutionError(ex.Message));
+						return null;
+					}
 
-
+					return updateProductRes;
+				}
+				);
 		}
     }
 }

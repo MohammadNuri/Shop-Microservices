@@ -2,6 +2,8 @@
 using MediatR;
 using Products.Api.GQL.Types.Products;
 using Products.Application.Products.Queries.GetProductsList;
+#pragma warning disable CS0618
+#pragma warning disable GQL004
 
 namespace Products.Api.GQL.Queries
 {
