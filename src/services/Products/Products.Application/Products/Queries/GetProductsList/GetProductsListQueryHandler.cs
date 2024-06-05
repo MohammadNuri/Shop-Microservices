@@ -12,7 +12,7 @@ using Products.Domain.Products;
 
 namespace Products.Application.Products.Queries.GetProductsList
 {
-    internal class GetProductsListQueryHandler:IRequestHandler<GetProductsListQuery, List<ProductResDto>>
+    public class GetProductsListQueryHandler:IRequestHandler<GetProductsListQuery, List<ProductResDto>>
     {
 
         private readonly IReadUnitOfWork _readUnitOfWork;
