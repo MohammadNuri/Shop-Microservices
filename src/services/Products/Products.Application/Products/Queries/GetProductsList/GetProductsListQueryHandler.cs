@@ -12,8 +12,8 @@ using Products.Domain.Products;
 
 namespace Products.Application.Products.Queries.GetProductsList
 {
-    public class GetProductsListQueryHandler:IRequestHandler<GetProductsListQuery, List<ProductResDto>>
-    {
+    public class GetProductsListQueryHandler:IRequestHandler<GetProductsListQuery, PaginationResDto<List<ProductResDto>>>
+	{
 
         private readonly IReadUnitOfWork _readUnitOfWork;
         private readonly IMapper _mapper;
@@ -24,10 +24,21 @@ namespace Products.Application.Products.Queries.GetProductsList
             _mapper = mapper;
         }
 
-		public async Task<List<ProductResDto>> Handle(GetProductsListQuery request, CancellationToken cancellationToken)
+		public async Task<PaginationResDto<List<ProductResDto>>> Handle(GetProductsListQuery request, CancellationToken cancellationToken)
 		{
-            var productList = await _readUnitOfWork.ProductReadRepository.GetAllAsync();
-            return _mapper.Map<List<ProductResDto>>(productList);
+			var productList = await _readUnitOfWork.ProductReadRepository.GetByFilterPagedAsync(request);
+			PaginationResDto<List<ProductResDto>> result = new PaginationResDto<List<ProductResDto>>
+			{
+				Data = _mapper.Map<List<ProductResDto>>(productList.Item1),
+				TotalCount = productList.Item2,
+				PageIndex = request.PageIndex,
+				PageSize = request.PageSize
+
+			};
+
+			return result;
+
 		}
+
 	}
 }

@@ -9,8 +9,7 @@ using Products.Domain.Products;
 
 namespace Products.Application.Products.Queries.GetProductsList
 {
-    public class GetProductsListQuery : IRequest<List<ProductResDto>>
+    public class GetProductsListQuery : ProductFilterPageReqDto, IRequest<PaginationResDto<List<ProductResDto>>>
     {
-
     }
 }
