@@ -31,10 +31,4 @@
     <ProjectReference Include="..\Products.Infrastructure\Products.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="SeedData\CategorySeed.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>

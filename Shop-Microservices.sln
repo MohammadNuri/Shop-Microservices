@@ -9,15 +9,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{30
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Products", "Products", "{107917E9-A9B0-4574-80A1-05CEF7606F04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products.Api", "src\services\Products\Products.Api\Products.Api.csproj", "{6FEBF1AC-D7D9-48BD-A046-373EDE6B6848}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products.Api", "src\services\Products\Products.Api\Products.Api.csproj", "{6FEBF1AC-D7D9-48BD-A046-373EDE6B6848}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products.Domain", "src\services\Products\Products.Domain\Products.Domain.csproj", "{DEEBAB62-0996-417F-B1BF-2C7EAC19B41C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products.Domain", "src\services\Products\Products.Domain\Products.Domain.csproj", "{DEEBAB62-0996-417F-B1BF-2C7EAC19B41C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products.Infrastructure", "src\services\Products\Products.Infrastructure\Products.Infrastructure.csproj", "{2B9AAFD8-20E6-4487-A7D2-F605182476C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products.Infrastructure", "src\services\Products\Products.Infrastructure\Products.Infrastructure.csproj", "{2B9AAFD8-20E6-4487-A7D2-F605182476C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products.Application", "src\services\Products\Products.Application\Products.Application.csproj", "{2DB3D6E4-6A41-4BFF-A498-B51B206B9E03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products.Application", "src\services\Products\Products.Application\Products.Application.csproj", "{2DB3D6E4-6A41-4BFF-A498-B51B206B9E03}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{E8415EBE-3DA8-4736-8291-6F892D96C5D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Baskets", "Baskets", "{158CB4A5-A0A3-4D13-92FC-C9CC7E425191}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.Api", "src\services\Baskets\Basket.Api\Basket.Api.csproj", "{461DA534-3E63-4C79-A7BC-40C0989EC8B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,10 @@ Global
 		{E8415EBE-3DA8-4736-8291-6F892D96C5D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8415EBE-3DA8-4736-8291-6F892D96C5D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8415EBE-3DA8-4736-8291-6F892D96C5D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{461DA534-3E63-4C79-A7BC-40C0989EC8B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{461DA534-3E63-4C79-A7BC-40C0989EC8B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{461DA534-3E63-4C79-A7BC-40C0989EC8B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{461DA534-3E63-4C79-A7BC-40C0989EC8B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +64,8 @@ Global
 		{DEEBAB62-0996-417F-B1BF-2C7EAC19B41C} = {107917E9-A9B0-4574-80A1-05CEF7606F04}
 		{2B9AAFD8-20E6-4487-A7D2-F605182476C6} = {107917E9-A9B0-4574-80A1-05CEF7606F04}
 		{2DB3D6E4-6A41-4BFF-A498-B51B206B9E03} = {107917E9-A9B0-4574-80A1-05CEF7606F04}
+		{158CB4A5-A0A3-4D13-92FC-C9CC7E425191} = {3024E547-F52F-4C6E-B299-2F8411A61EC8}
+		{461DA534-3E63-4C79-A7BC-40C0989EC8B6} = {158CB4A5-A0A3-4D13-92FC-C9CC7E425191}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D4891236-8ED6-44BF-B3C6-0DC3179890D5}

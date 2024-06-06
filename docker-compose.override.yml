@@ -1,7 +1,6 @@
 version: '3.4'
 
 services:
-
   productdb:
     container_name: productdb
     environment: 
@@ -12,7 +11,12 @@ services:
     ports: 
       - "5435:5432"
     volumes:
-      - postgres_data:/var/lib/postgrsql/data/
+      - postgres_data:/var/lib/postgresql/data/
+  basketdb:
+    container_name: basketdb
+    restart: always
+    ports:
+      - "6379:6379"
   pgadmin:
     container_name: pgadmin
     environment: 
@@ -31,3 +35,11 @@ services:
       - "10000:8080"
     depends_on:
       - productdb
+
+  basket.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+    ports:
+      - "10001:8080"
+
